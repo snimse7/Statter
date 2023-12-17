@@ -1,0 +1,121 @@
+<div class="modal-container" *ngIf="close">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper
+        style="width: 50rem; background: linear-gradient(to bottom, #312d5a, #101300);">
+        <mat-step>
+            <div class="w-full md:w-1/3">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Home Team</label>
+                    <input class="form-control" id="exampleFormControlInput1" placeholder=""
+                        [(ngModel)]="firstForm.homeTeam">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Away Team</label>
+                    <input class="form-control" id="exampleFormControlInput1" placeholder=""
+                        [(ngModel)]="firstForm.awayTeam">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Toss</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="firstForm.tossWon">
+                        <option value={{firstForm.homeTeam}}>{{firstForm.homeTeam}}</option>
+                        <option value={{firstForm.awayTeam}}>{{firstForm.awayTeam}}</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label" >Choose To</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="firstForm.chooseTo">
+
+                        <option value="Bat">Bat</option>
+                        <option value="Bowl">Bowl</option>
+
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Overs</label>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="firstForm.overs">
+                        <option *ngFor="let number of numbers" value={{number}}>{{number}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperNext (click)="shubha()" style="color: violet;">Next</button>
+            </div>
+
+        </mat-step>
+        <mat-step>
+
+            <div>
+
+
+                <div class="ng-autocomplete" style="width: 45rem;">
+                    <label for="exampleFormControlInput1" class="form-label">On-Strike Batsman</label>
+                    <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeholder="Select Onstrike Batsman"
+                        (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" [(ngModel)]="firstForm.onStrike">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+                <br>
+                <div class="ng-autocomplete" style="width: 45rem;">
+                    <label for="exampleFormControlInput1" class="form-label">Non-Strike Batsman</label>
+
+                    <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeholder="Select Non-strike Batsman"
+                        (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" [(ngModel)]="firstForm.nonStrike">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+                <br>
+
+                <div class="ng-autocomplete" style="width: 45rem;">
+                    <label for="exampleFormControlInput1" class="form-label">Bowler Name</label>
+
+                    <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeholder="Select  Bowler"
+                        (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+                        (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+                        [notFoundTemplate]="notFoundTemplate" [(ngModel)]="firstForm.bowler">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.name"></a>
+                    </ng-template>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperPrevious (click)="next1()" style="color: violet;">Back</button>
+                <button mat-button matStepperNext (click)="next1()" style="color: violet;">Start Match</button>
+            </div>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+
+</div>
+
+<div *ngIf="open">
+    <app-match [form]="this.firstForm"></app-match>
+</div>

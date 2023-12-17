@@ -1,0 +1,134 @@
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    margin-left:400px;
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+.d-block {
+    display: block!important;
+}
+.mb-1 {
+    margin-bottom: 0.25rem!important;
+}
+.mx-auto {
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+
+
+
+
+
+
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Global Styles */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Bootstrap default background color */
+  }
+  
+  /* Container Styles */
+  .container {
+    max-width: 1920px;
+    /* margin: 0 auto; */
+     /* Add padding to the container */
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #ffffff; /* White background */
+    padding: 20px 0; /* Add padding to the header */
+    box-shadow: 0 4px 2px -2px rgb(173, 11, 11); /* Add a subtle box shadow */
+    background-color: #000000;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center; /* Center the navigation items horizontally */
+  }
+  
+  .nav-pills {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .nav-item {
+    margin-left: 1rem;
+    margin-right: 1.5rem; /* Adjust spacing between menu items */
+  }
+  
+  .nav-link {
+    color: wheat; /* Bootstrap primary color */
+    text-decoration: none;
+    font-weight: 500; /* Medium font weight */
+    transition: color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .nav-link:hover {
+    color: #0056b3; /* Darker shade on hover */
+  }
+  
+  .nav-link.active {
+    color: #000000; /* Black color for active item */
+    border-bottom: 4px solid #007bff; /* Bottom border for active item */
+  }
+  
+  /* Divider Styles */
+  .b-example-divider {
+    height: 1rem; /* Divider height */
+    background-color: #dee2e6; /* Bootstrap background color */
+    border: solid #dee2e6;
+    border-width: 1px 0;
+    margin: 20px 0; /* Margin above and below the divider */
+  }
+  
+
+
+
+
+
+
+
+
+  

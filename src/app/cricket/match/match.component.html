@@ -1,0 +1,239 @@
+<div class="modal-s">
+
+    <div class="row" style="margin-left: 20%;">
+        <div class="col-sm-4">
+          <h3> {{form.homeTeam}} </h3>
+          <h3>{{ runs }}/{{ wickets }}</h3>
+          <h3>({{ overs }}.{{ballsInOvers}})</h3>
+        </div>
+        <div class="col-sm-2">
+            <h3>Run Rate: {{runRate}}</h3>
+        </div>
+
+        
+    </div>
+    
+    <div style="display: flex; flex-direction: row;margin-top: 5px;" class="flex-container">
+        <label for="" style="margin-right: 10px;">This Over: </label>
+        <p *ngFor="let bowl of bowls" style="margin-right: 10px;"> {{bowl[1].Extra}}{{bowl[0].Run}}</p>
+    </div>
+
+    <br>
+
+    
+    <div class="row" style="align-content: center;">
+       
+
+        <div class="col-sm-3 form-check">
+            <div>
+                <label style="margin-right:50px;">
+                  <input type="radio" name="radioGroup" value="Wd" [(ngModel)]="wide">  Wide
+                </label>
+              
+                <label>
+                  <input type="radio" name="radioGroup" value="Nb" [(ngModel)]="wide"> No Ball 
+                </label>
+              
+                
+              </div>
+              
+          </div>
+
+        <div class="col-sm-3">
+           
+
+            <div>
+                <label style="margin-right:50px;">
+                  <input type="radio" name="bye" value="Bye" [(ngModel)]="byes"> Bye
+                </label>
+              
+                <label>
+                  <input type="radio" name="bye" value="Lb" [(ngModel)]="byes">  Leg Byes
+                </label>
+            </div>
+        </div>
+
+        <br>
+        <br>
+      
+    </div>
+
+     <div style="display: flex; flex-direction: row;margin-top: 5px;" >
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;"  (click)="addRuns(0)" >0</button>
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;"  (click)="addRuns(1)">1</button>
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;" (click)="addRuns(2)">2</button>
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;" (click)="addRuns(3)">3</button>
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;" (click)="addRuns(4)">Four</button>
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;" (click)="addRuns(6)">Six</button>
+        <input class="form-control" type="number" id="exampleFormControlInput1" placeholder="" style="margin-right: 10px;width: 70px;" [(ngModel)]="customRuns">
+        <button type="button" class="btn btn-outline-info" style="margin-right: 10px;" (click)="addRuns(customRuns)">Custom</button>
+        <button type="button" class="btn btn-outline-danger" onclick="window.dialog.showModal();">Wicket</button>
+        
+    </div>
+
+<br>
+    <div class="row" style="display: flex; flex-direction: row;margin-top: 5px;" class="flex-container">
+        <div class="col-sm-2" style="border: red;" >
+          <h4> Batsman</h4>
+          <h4 style="display: flex;">{{ Batsman1.name }} <p *ngIf="WhoOnStrike"> *</p></h4>
+          <h4 style="display: flex;">{{ Batsman2.name }} <p *ngIf="!WhoOnStrike"> *</p></h4>
+          
+        </div>
+        <div class="col-sm-2">
+            <h4> . </h4>
+            <h4>not out</h4>
+            <h4>not out</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> Runs </h4>
+            <h4>{{ Batsman1.runs }}</h4>
+            <h4>{{ Batsman2.runs }}</h4>
+        </div>
+        <div class="col-sm-1">
+            <h4> Bowls </h4>
+            <h4>{{ Batsman1.bowlsPlayed }}</h4>
+            <h4>{{ Batsman2.bowlsPlayed }}</h4>
+        </div>
+        <div class="col-sm-1">
+            <h4> 4s </h4>
+            <h4>{{ Batsman1.fours }}</h4>
+            <h4>{{ Batsman2.fours }}</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> 6s </h4>
+            <h4>{{ Batsman1.six }}</h4>
+            <h4>{{ Batsman2.six }}</h4>
+        </div>
+
+        <div class="col-sm-2">
+            <h4>strike Rate </h4>
+            <h4>{{ Batsman1.strikeRate | number:'1.2-2' }}</h4>
+            <h4>{{ Batsman2.strikeRate | number:'1.2-2'}}</h4>
+        </div>
+        
+    </div>
+
+
+    <div class="row" style="display: flex; flex-direction: row;margin-top: 5px;" class="flex-container">
+        <div class="col-sm-3" style="border: red;" >
+          <h4> Bowler</h4>
+          <h4>{{ form.onStrike}}</h4>
+          <h4>{{ form.nonStrike }}</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> Overs </h4>
+            <h4>{{ runs }}/{{ wickets }}</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> Runs </h4>
+            <h4>{{ runs }}/{{ wickets }}</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> Maiden </h4>
+            <h4>{{ runs }}/{{ wickets }}</h4>
+        </div>
+        <div class="col-sm-2">
+            <h4> Wickets </h4>
+            <h4>{{ runs }}/{{ wickets }}</h4>
+          
+        </div>
+        <div class="col-sm-2">
+            <h4> Economy </h4>
+            <h4>{{ runs }}/{{ wickets }}</h4>
+           
+        </div>
+
+        
+    </div>
+
+
+<!-- 
+    <mat-tab-group>
+        <mat-tab label="First"> 
+            
+        </mat-tab>
+        <mat-tab label="Second"> Content 2 </mat-tab>
+     
+    </mat-tab-group> -->
+
+    
+    
+</div>
+
+
+
+
+
+
+
+
+
+<dialog id="dialog">
+	<div style="margin-top: 20px;">
+        <label style="margin-right:50px;">
+          <input type="radio" name="bye" value="bats" [(ngModel)]="byes"> Batsman 1
+        </label>
+      
+        <label>
+          <input type="radio" name="bye" value="bat2" [(ngModel)]="byes">  Batsman 2
+        </label>
+    </div>
+	<button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+    <div style="margin-top: 20px;">
+        <label for="exampleFormControlInput1" class="form-label">Out Type</label>
+        <select class="form-select" aria-label="Default select example">
+            <option value="1">Bowled</option>
+            <option value="2">Catch Out</option>
+            <option value="3">Run Out Striker</option>
+            <option value="3">Run Out Non-Striker</option>
+            <option value="3">Stumping</option>
+            <option value="3">LBW</option>
+            <option value="3">Hit Wicket</option>
+            <option value="3">Timed Out</option>
+            <option value="3">Obstructing Field</option>
+            <option value="3">Hit Ball Twice</option>
+          </select>
+    </div>
+    <div class="ng-autocomplete" style="width: 38rem;margin-top: 20px;">
+        <label for="exampleFormControlInput1" class="form-label">By</label>
+        <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeholder="Select Onstrike Batsman"
+            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate" >
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+        </ng-template>
+    </div>
+    <button type="button" class="btn btn-outline-primary" style="    margin-top: 50px;margin-left: 500px;">Submit</button>
+</dialog>
+
+
+
+<dialog id="dialog2" style="height: 300px;">
+	
+	<button onclick="window.dialog2.close();" aria-label="close" class="x">❌</button>
+    
+    <div class="ng-autocomplete" style="width: 38rem;margin-top: 20px;">
+        <label for="exampleFormControlInput1" class="form-label">New Bowler</label>
+        <ng-autocomplete [data]="data" [searchKeyword]="keyword" placeholder="Select Onstrike Batsman"
+            (selected)='selectEvent($event)' (inputChanged)='onChangeSearch($event)'
+            (inputFocused)='onFocused($event)' [itemTemplate]="itemTemplate"
+            [notFoundTemplate]="notFoundTemplate" >
+        </ng-autocomplete>
+
+        <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+        </ng-template>
+
+        <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+        </ng-template>
+    </div>
+    <button type="button" class="btn btn-outline-primary" style="    margin-top: 50px;margin-left: 500px;">Submit</button>
+</dialog>
